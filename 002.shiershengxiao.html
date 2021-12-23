@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<img src="img/q.jfif" @click="show()" style="width: 500px; height: 400px;"/>
+		</div>
+		<script>
+			let v=new Vue({
+				el:"#app",
+				data:{
+					flag:0,
+					clickx:0,
+					clicky:0
+				},
+				methods:{
+					show(){
+						//老鼠25，38         115，135
+						//牛 158  29         227,130
+						//老虎264,72         366,110
+						//兔子401，23        493 130
+						//龙18    162        124   249
+						v.clickx=event.clientX;
+						v.clicky=event.clientY;
+						console.log(v.clickx+","+v.clicky);
+						if(v.flag==0&&v.clickx>=25&&v.clickx<=115&&v.clicky>=38&&v.clicky<=135){
+							v.flag=1;
+							console.log("第一次点击"+v.flag);
+							console.log(v.clickx+","+v.clicky);
+						}
+						if(v.flag==1&&v.clickx>=158&&v.clickx<=227&&v.clicky>=29&&v.clicky<130){
+							v.flag=2;
+							console.log("第二次点击"+v.flag);
+							console.log(v.clickx+","+v.clicky);
+						}
+						if(v.flag==2&&v.clickx>264&&v.clickx<366&&v.clicky>=72&&v.clicky<=110){
+							v.flag=3;
+							console.log("第三次点击"+v.flag);
+							console.log(v.clickx+","+v.clicky);
+						}
+						if(v.flag==3&&v.clickx>401&&v.clickx<493&&v.clicky>=23&&v.clicky<=130){
+							v.flag=4;
+							console.log("第四次点击"+v.flag);
+							console.log(v.clickx+","+v.clicky);
+						}
+						if(v.flag==4&&v.clickx>18&&v.clickx<124&&v.clicky>=162&&v.clicky<=249){
+							v.flag=5;
+							console.log("第五次点击"+v.flag);
+							console.log(v.clickx+","+v.clicky);
+							alert("按顺序点击5次完毕")
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
